@@ -1,0 +1,4 @@
+node_modules/
+.vscode/
+geoserver-config/data_dir/logs/
+geoserver-config/data_dir/temp/

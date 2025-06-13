@@ -1,0 +1,31 @@
+<form id="options-form" autocomplete="off" style="padding: 16px;">
+  <mat-radio-group name="interaction" (change)="onFormChange()" aria-label="Select interaction type">
+    <mat-radio-button value="draw" checked>Draw</mat-radio-button>
+    <mat-form-field appearance="fill" style="margin-left: 8px; min-width: 150px;">
+      <mat-label>Draw Type</mat-label>
+      <mat-select id="draw-type">
+        <mat-option value="LineString">LineString</mat-option>
+        <mat-option disabled value="Polygon">Polygon</mat-option>
+        <mat-option disabled value="Circle">Circle</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-radio-button value="modify" style="margin-left: 20px;">Modify</mat-radio-button>
+    <mat-radio-button value="delete" style="margin-left: 20px;">Delete</mat-radio-button>
+
+    <button mat-raised-button color="warn"
+            (click)="deleteFeature()"
+            *ngIf="selectedFeatures.length > 0"
+            style="margin-left: 16px;">
+      Delete
+    </button>
+  </mat-radio-group>
+
+  <div style="margin-top: 16px;">
+    <mat-label>Import GeoJSON</mat-label>
+    <input type="file" (change)="fileChange($event)" accept=".geojson,.json" />
+  </div>
+</form>
+
+<!-- Map container -->
+<div #mapElement class="map"></div>
